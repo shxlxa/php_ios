@@ -8,6 +8,8 @@
 
 #import "ViewController.h"
 
+#define kIP @"192.168.1.105"
+
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *nameTF;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTF;
@@ -22,7 +24,26 @@
 }
 
 - (IBAction)registerEvent:(id)sender {
-    [self getResult];
+    //[self getResult];
+    
+    [self getVidesNames];
+}
+
+- (void)getVidesNames{
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSString *urlStr = [NSString stringWithFormat:@"http://%@/phpTest/files.php",kIP];
+    NSString *str = [urlStr stringByRemovingPercentEncoding];
+    NSURL *url = [NSURL URLWithString:str];
+    NSURLSessionTask *task = [session dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        NSString *result = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        
+        NSLog(@"result = %@",result);
+        if (data != nil) {
+            NSArray *videos = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers | NSJSONReadingMutableLeaves error:nil];
+            NSLog(@"videos = %@",videos);
+        }
+    }];
+    [task resume];
 }
 
 /**
@@ -30,12 +51,14 @@
  */
 - (void)getResult{
     NSURLSession *session = [NSURLSession sharedSession];
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://localhost/phpTest/aviTest.php?name=%@&password=%@",_nameTF.text,_passwordTF.text]];
-    
+    //NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@/phpTest/aviTest.php?name=%@&password=%@",kIP,_nameTF.text,_passwordTF.text]];
+    NSString *urlStr = [NSString stringWithFormat:@"http://%@/phpTest/aviTest.php?name=%@&password=%@",kIP,_nameTF.text,_passwordTF.text];
+    NSString *str = [urlStr stringByRemovingPercentEncoding];
+    NSURL *url = [NSURL URLWithString:str];
     NSURLSessionTask *task = [session dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         NSString *result = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         
-//        NSLog(@"result = %@",result);3
+        NSLog(@"result = %@",result);
         if (data != nil) {
             NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers | NSJSONReadingMutableLeaves error:nil];
             NSLog(@"dic = %@",dic);
