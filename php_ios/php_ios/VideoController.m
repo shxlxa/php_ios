@@ -7,10 +7,10 @@
 //
 
 #import "VideoController.h"
-#import "PlayerViewController.h"
+//#import "PlayerViewController.h"
 #import "FTWebViewController.h"
+#import "constant.h"
 
-#define kIP @"192.168.1.105"
 
 
 @interface VideoController ()<UITableViewDelegate,UITableViewDataSource>
@@ -67,9 +67,14 @@
 //    vc.videoName = _dataList[indexPath.row];
 //    [self.navigationController pushViewController:vc animated:YES];
     
-    NSString *urlStr = [NSString stringWithFormat:@"http://%@/phpTest/videos/%@",kIP,_dataList[indexPath.row]];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/phpTest/videos/%@",kIPHeader,_dataList[indexPath.row]];
+    
+    //NSString *encodeUrl = [urlStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
+    NSString *encodeUrl = [urlStr stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+    NSLog(@"cft-url:%@ encoderUrl:%@",urlStr,encodeUrl);
     FTWebViewController *webVC = [[FTWebViewController alloc] init];
-    [webVC loadWebURLSring:urlStr];
+    [webVC loadWebURLSring:encodeUrl];
     [self.navigationController pushViewController:webVC animated:YES];
 }
 
@@ -77,7 +82,7 @@
 
 - (void)getVidesNames{
     NSURLSession *session = [NSURLSession sharedSession];
-    NSString *urlStr = [NSString stringWithFormat:@"http://%@/phpTest/files.php",kIP];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/phpTest/files.php",kIPHeader];
     NSString *str = [urlStr stringByRemovingPercentEncoding];
     NSURL *url = [NSURL URLWithString:str];
     NSURLSessionTask *task = [session dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {

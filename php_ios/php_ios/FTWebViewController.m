@@ -158,6 +158,7 @@ static void *WkwebBrowserContext = &WkwebBrowserContext;
 #pragma mark ================ 自定义返回/关闭按钮 ================
 
 -(void)updateNavigationItems{
+    return;
     if (self.wkWebView.canGoBack) {
         UIBarButtonItem *spaceButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
         spaceButtonItem.width = -6.5;

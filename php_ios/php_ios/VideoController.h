@@ -10,4 +10,6 @@
 
 @interface VideoController : UIViewController
 
+@property (nonatomic, copy)   NSString  *folder;
+
 @end
