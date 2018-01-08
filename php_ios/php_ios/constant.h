@@ -10,6 +10,7 @@
 #define constant_h
 
 #define kIPHeader @"http://192.168.1.101"
+#import "FTNetAPIClient.h"
 
 
 #endif /* constant_h */

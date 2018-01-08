@@ -26,8 +26,9 @@
     [super viewDidLoad];
     
     self.navigationItem.title = @"视频列表";
-    [self getVidesNames];
+    [self getVideoNames];
     [self addTableView];
+    
 }
 
 
@@ -63,14 +64,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-//    PlayerViewController *vc = [[PlayerViewController alloc] init];
-//    vc.videoName = _dataList[indexPath.row];
-//    [self.navigationController pushViewController:vc animated:YES];
-    
     NSString *urlStr = [NSString stringWithFormat:@"%@/phpTest/videos/%@",kIPHeader,_dataList[indexPath.row]];
-    
-    //NSString *encodeUrl = [urlStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    
     NSString *encodeUrl = [urlStr stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
     NSLog(@"cft-url:%@ encoderUrl:%@",urlStr,encodeUrl);
     FTWebViewController *webVC = [[FTWebViewController alloc] init];
@@ -78,27 +72,20 @@
     [self.navigationController pushViewController:webVC animated:YES];
 }
 
-
-
-- (void)getVidesNames{
-    NSURLSession *session = [NSURLSession sharedSession];
+- (void)getVideoNames{
     NSString *urlStr = [NSString stringWithFormat:@"%@/phpTest/files.php",kIPHeader];
     NSString *str = [urlStr stringByRemovingPercentEncoding];
-    NSURL *url = [NSURL URLWithString:str];
-    NSURLSessionTask *task = [session dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        if (data != nil) {
-            NSArray *videos = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers | NSJSONReadingMutableLeaves error:nil];
-            NSLog(@"videos = %@",videos);
-            _dataList = [NSArray arrayWithArray:videos];
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self.tableView reloadData];
-            });
-        }
+    [[FTNetAPIClient sharedInstance] getRequestDataWithUrl:str param:nil success:^(id responsObject) {
+        NSLog(@"cft-res %@",responsObject);
+        NSArray *videos = responsObject;
+        _dataList = [NSArray arrayWithArray:videos];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView reloadData];
+        });
+    } fail:^(NSError *error) {
+        NSLog(@"cft-fail %@",error.localizedDescription);
     }];
-    [task resume];
 }
-
-
 
 
 @end
