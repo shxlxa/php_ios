@@ -38,7 +38,7 @@
 
 
 - (void)uploadVideo{
-    NSString *file = [[NSBundle mainBundle] pathForResource:@"Everytime" ofType:@"mp4"];
+    NSString *file = [[NSBundle mainBundle] pathForResource:@"polyLine" ofType:@"zip"];
     NSString *path = [NSString stringWithFormat:@"%@/phpTest",kIPHeader];
     [[FTNetAPIClient sharedInstance] uploadVideo:file WithPath:path success:^(id responsObject) {
         NSLog(@"cft-response:%@",responsObject);

@@ -9,11 +9,11 @@
 #ifndef constant_h
 #define constant_h
 
-#define kIPHeader @"http://192.168.1.104/phpTest/phpCode"
+#define kIPHeader @"http://192.168.1.103/phpTest/phpCode"
 #import "FTNetAPIClient.h"
 #import "Tools.h"
 
-#define kIP @"http://192.168.1.104"
+#define kIP @"http://192.168.1.103"
 
 
 #endif /* constant_h */

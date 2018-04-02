@@ -80,7 +80,8 @@
         for (NSString *video in videos) {
             VideoModel *model = [[VideoModel alloc] init];
             model.videoName = video;
-            model.videoUrl = [NSString stringWithFormat:@"%@/phpTest/%@/%@",kIP,self.folder,video];
+            NSString *videoURL = [NSString stringWithFormat:@"%@/phpTest/%@/%@",kIP,self.folder,video];
+            model.videoUrl = [videoURL stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];;
             [_dataList addObject:model];
         }
         dispatch_async(dispatch_get_main_queue(), ^{

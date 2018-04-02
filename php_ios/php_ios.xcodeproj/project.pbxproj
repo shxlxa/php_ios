@@ -45,7 +45,6 @@
 		0473A1D21FD99C0F00F5C051 /* FTNetAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 0473A1D11FD99C0E00F5C051 /* FTNetAPIClient.m */; };
 		0473A1D51FD99E7600F5C051 /* UploadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0473A1D41FD99E7600F5C051 /* UploadViewController.m */; };
 		0473A1D81FD99F2400F5C051 /* polyLine.zip in Resources */ = {isa = PBXBuildFile; fileRef = 0473A1D71FD99F2300F5C051 /* polyLine.zip */; };
-		0473A1DA1FD99F9300F5C051 /* Everytime.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 0473A1D91FD99F9300F5C051 /* Everytime.mp4 */; };
 		04B4CDC31FDED32A00EB3241 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B4CDC21FDED32A00EB3241 /* TestViewController.m */; };
 		214521111E46C669006D97B4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 214521101E46C669006D97B4 /* main.m */; };
 		214521141E46C669006D97B4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 214521131E46C669006D97B4 /* AppDelegate.m */; };
@@ -154,7 +153,6 @@
 		0473A1D31FD99E7600F5C051 /* UploadViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UploadViewController.h; sourceTree = "<group>"; };
 		0473A1D41FD99E7600F5C051 /* UploadViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UploadViewController.m; sourceTree = "<group>"; };
 		0473A1D71FD99F2300F5C051 /* polyLine.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = polyLine.zip; sourceTree = "<group>"; };
-		0473A1D91FD99F9300F5C051 /* Everytime.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Everytime.mp4; sourceTree = "<group>"; };
 		0473A1DB1FD99FD200F5C051 /* constant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = constant.h; sourceTree = "<group>"; };
 		04B4CDC11FDED32A00EB3241 /* TestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
 		04B4CDC21FDED32A00EB3241 /* TestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
@@ -333,7 +331,6 @@
 		0473A1D61FD99F2300F5C051 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				0473A1D91FD99F9300F5C051 /* Everytime.mp4 */,
 				0473A1D71FD99F2300F5C051 /* polyLine.zip */,
 			);
 			path = Resource;
@@ -535,7 +532,6 @@
 				2145211F1E46C66B006D97B4 /* LaunchScreen.storyboard in Resources */,
 				2145211C1E46C66B006D97B4 /* Assets.xcassets in Resources */,
 				0473A1871FD8546A00F5C051 /* FastForwardView.xib in Resources */,
-				0473A1DA1FD99F9300F5C051 /* Everytime.mp4 in Resources */,
 				0473A1891FD8546A00F5C051 /* WMPlayer.bundle in Resources */,
 				2145211A1E46C669006D97B4 /* Main.storyboard in Resources */,
 				0473A1D81FD99F2400F5C051 /* polyLine.zip in Resources */,
