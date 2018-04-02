@@ -36,11 +36,10 @@ static FTNetAPIClient *netAPIClient;
 
 #pragma mark - get请求
 - (void)getRequestDataWithUrl:(NSString *)url
-                        param:(NSDictionary *)para
                       success:(SuccessBlock)success
                          fail:(FailBlock)fail
 {
-    [self netRequestData:url withParam:para withMethodType:Get success:success fail:fail];
+    [self netRequestData:url withParam:nil withMethodType:Get success:success fail:fail];
 }
 
 #pragma mark - post请求
@@ -74,7 +73,7 @@ static FTNetAPIClient *netAPIClient;
     [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript",@"application/x-json",@"text/html", nil];
     if (method == Get) {
-        [manager GET:url parameters:para success:^(NSURLSessionDataTask *task, id responseObject) {
+        [manager GET:url parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
             DebugLog(@"\n===========response===========\n%@:\n%@", url, responseObject);
             if (success) {
                 success(responseObject);

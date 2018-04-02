@@ -23,7 +23,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r7K-EB-ePT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1421" y="185"/>
+            <point key="canvasLocation" x="-4254" y="-904"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="eEJ-W7-H3D">
@@ -37,20 +37,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lrw-7c-teh">
-                                <rect key="frame" x="142" y="135" width="31" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="注册"/>
-                                <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="jJe-Zv-BUI"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aPo-Hc-AHJ">
                                 <rect key="frame" x="126" y="212" width="62" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="视频列表"/>
+                                <state key="normal" title="list"/>
                                 <connections>
-                                    <action selector="videoList:" destination="txe-mW-t6s" eventType="touchUpInside" id="ItE-DR-Oeu"/>
+                                    <action selector="videoList:" destination="txe-mW-t6s" eventType="touchUpInside" id="DQm-yg-6cU"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LoG-g6-H0N">
@@ -69,6 +61,38 @@
                                     <action selector="python:" destination="txe-mW-t6s" eventType="touchUpInside" id="Hia-WA-7ov"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DVT-KK-zsh">
+                                <rect key="frame" x="144" y="436" width="42" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="image"/>
+                                <connections>
+                                    <action selector="image:" destination="txe-mW-t6s" eventType="touchUpInside" id="ekX-EH-wi9"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lrw-7c-teh">
+                                <rect key="frame" x="144" y="140" width="31" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="注册"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="NCr-wA-RV0"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U65-6b-KOY">
+                                <rect key="frame" x="142" y="512" width="47" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="korean"/>
+                                <connections>
+                                    <action selector="korean:" destination="txe-mW-t6s" eventType="touchUpInside" id="xiT-Ur-XRh"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9J9-1Y-KH4">
+                                <rect key="frame" x="151" y="573" width="32" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="local"/>
+                                <connections>
+                                    <segue destination="Zrn-ZO-vmg" kind="show" id="rf1-oI-pgl"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -76,12 +100,30 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fuk-q4-TaK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-714.39999999999998" y="133.5832083958021"/>
+            <point key="canvasLocation" x="-3226.4000000000001" y="-806.44677661169419"/>
         </scene>
-        <!--View Controller-->
+        <!--Local Video Controller-->
+        <scene sceneID="gTd-xB-vqd">
+            <objects>
+                <viewController id="Zrn-ZO-vmg" customClass="LocalVideoController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="6Ut-3T-z7T"/>
+                        <viewControllerLayoutGuide type="bottom" id="gRj-Aj-BrK"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="huh-Eq-g6b">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="X54-M6-JlU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2806" y="-645"/>
+        </scene>
+        <!--Register View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="RegisterViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -136,7 +178,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="270" y="-412"/>
+            <point key="canvasLocation" x="-2207" y="-806"/>
         </scene>
         <!--Upload View Controller-->
         <scene sceneID="s9u-5e-kO1">
@@ -172,25 +214,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RI5-Zn-Obx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-255" y="903"/>
-        </scene>
-        <!--Video Controller-->
-        <scene sceneID="5vK-od-9YB">
-            <objects>
-                <viewController id="89J-cn-xYt" customClass="VideoController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="PP5-wq-PMi"/>
-                        <viewControllerLayoutGuide type="bottom" id="edA-wr-dm1"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="3iI-XE-oQQ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Da9-7y-gzJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="362" y="290"/>
+            <point key="canvasLocation" x="-2692" y="403"/>
         </scene>
     </scenes>
 </document>

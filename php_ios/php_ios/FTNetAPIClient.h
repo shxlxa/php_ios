@@ -49,11 +49,10 @@ typedef NS_ENUM(NSUInteger, DownloadType) {
  *  get请求
  *
  *  @param url     url
- *  @param para    param
  *  @param success success block
  *  @param fail    fail block
  */
-- (void)getRequestDataWithUrl:(NSString *)url param:(NSDictionary *)para success:(SuccessBlock)success fail:(FailBlock)fail;
+- (void)getRequestDataWithUrl:(NSString *)url success:(SuccessBlock)success fail:(FailBlock)fail;
 
 /**
  *  post请求

@@ -8,6 +8,8 @@
 
 #import "MainViewController.h"
 #import "VideoController.h"
+#import "FTWebViewController.h"
+#import "constant.h"
 
 @interface MainViewController ()
 
@@ -18,6 +20,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    NSLog(@"cft-ip %@",kIP);
 }
 - (IBAction)videoList:(id)sender {
     VideoController *vc = [[VideoController alloc] init];
@@ -30,20 +34,21 @@
     vc.folder = @"python";
     [self.navigationController pushViewController:vc animated:YES];
 }
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (IBAction)korean:(id)sender {
+    VideoController *vc = [[VideoController alloc] init];
+    vc.folder = @"korean";
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+// http://192.168.1.101/phpTest/images/default.png
+- (IBAction)image:(id)sender {
+    NSString *urlStr = [NSString stringWithFormat:@"%@/phpTest/images/default.png",kIPHeader];
+    NSString *encodeUrl = [urlStr stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+    NSLog(@"cft-url:%@",urlStr);
+    FTWebViewController *webVC = [[FTWebViewController alloc] init];
+    [webVC loadWebURLSring:encodeUrl];
+    [self.navigationController pushViewController:webVC animated:YES];
 }
-*/
+
 
 @end

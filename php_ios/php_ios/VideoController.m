@@ -10,12 +10,13 @@
 //#import "PlayerViewController.h"
 #import "FTWebViewController.h"
 #import "constant.h"
-
+#import "VideoCell.h"
+#import "VideoModel.h"
 
 
 @interface VideoController ()<UITableViewDelegate,UITableViewDataSource>
 
-@property (nonatomic, strong) NSArray *dataList;
+@property (nonatomic, strong) NSMutableArray *dataList;
 @property (nonatomic, strong) UITableView  *tableView;
 
 @end
@@ -25,6 +26,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    _dataList = [NSMutableArray array];
     self.navigationItem.title = @"视频列表";
     [self getVideoNames];
     [self addTableView];
@@ -51,34 +53,36 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString *ID = @"cell";
-    UITableViewCell *cell = nil;
-    cell = [tableView dequeueReusableCellWithIdentifier:ID];
-    if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
-    }
-    cell.textLabel.text = _dataList[indexPath.row];
+    VideoCell *cell = [VideoCell cellWithTableView:tableView];
+    VideoModel *model = _dataList[indexPath.row];
+    cell.model = model;
+    cell.textLabel.text = model.videoName;
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    NSString *urlStr = [NSString stringWithFormat:@"%@/phpTest/videos/%@",kIPHeader,_dataList[indexPath.row]];
-    NSString *encodeUrl = [urlStr stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
-    NSLog(@"cft-url:%@ encoderUrl:%@",urlStr,encodeUrl);
+    VideoModel *model = _dataList[indexPath.row];
+    NSString *encodeUrl = [model.videoUrl stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+    NSLog(@"cft-url:%@",model.videoUrl);
     FTWebViewController *webVC = [[FTWebViewController alloc] init];
     [webVC loadWebURLSring:encodeUrl];
     [self.navigationController pushViewController:webVC animated:YES];
 }
 
 - (void)getVideoNames{
-    NSString *urlStr = [NSString stringWithFormat:@"%@/phpTest/files.php",kIPHeader];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/phpTest/files.php?dir=%@",kIP,self.folder];
     NSString *str = [urlStr stringByRemovingPercentEncoding];
-    [[FTNetAPIClient sharedInstance] getRequestDataWithUrl:str param:nil success:^(id responsObject) {
+    [[FTNetAPIClient sharedInstance] getRequestDataWithUrl:str success:^(id responsObject) {
         NSLog(@"cft-res %@",responsObject);
         NSArray *videos = responsObject;
-        _dataList = [NSArray arrayWithArray:videos];
+        for (NSString *video in videos) {
+            VideoModel *model = [[VideoModel alloc] init];
+            model.videoName = video;
+            model.videoUrl = [NSString stringWithFormat:@"%@/phpTest/%@/%@",kIP,self.folder,video];
+            [_dataList addObject:model];
+        }
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.tableView reloadData];
         });
